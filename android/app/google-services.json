@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "705510204267",
+    "project_id": "the-notes-36hours-tutor",
+    "storage_bucket": "the-notes-36hours-tutor.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705510204267:android:a97ce13c116752a4f1a22e",
+        "android_client_info": {
+          "package_name": "com.thenotes.thenotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "705510204267-mgv9qgvdg4mriptns4l7kp207elsd06g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQkAtH6BVOxx1YfmywO-jTZtSYzuNAK_I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "705510204267-mgv9qgvdg4mriptns4l7kp207elsd06g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
