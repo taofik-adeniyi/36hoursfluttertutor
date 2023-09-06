@@ -3,17 +3,24 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:thenotes/firebase_options.dart';
 import 'package:thenotes/views/login_view.dart';
+import 'package:thenotes/views/register_view.dart';
+import 'package:thenotes/views/verify_email_view.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
     title: 'Flutter Demo',
     debugShowCheckedModeBanner: false,
-    // theme: ThemeData(
-    //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-    //   useMaterial3: true,
-    // ),
-    home: HomePage(),
+    theme: ThemeData(
+        // colorSchemsse: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        // useMaterial3: tsrue,
+        primarySwatch: Colors.blue),
+    home: const HomePage(),
+    routes: {
+      '/register/': (context) => const RegisterView(),
+      '/login/': (context) => const LoginView(),
+      '/verify_email/': (context) => const VerifyEmailView()
+    },
   ));
 }
 
@@ -22,28 +29,38 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home Page'),
-      ),
-      body: FutureBuilder(
-        future: Firebase.initializeApp(
-            options: DefaultFirebaseOptions.currentPlatform),
-        builder: (context, snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.done:
-              final user = FirebaseAuth.instance.currentUser;
-              if (user?.emailVerified ?? false) {
-                print('You are a verified user');
+    return FutureBuilder(
+      future: Firebase.initializeApp(
+          options: DefaultFirebaseOptions.currentPlatform),
+      builder: (context, snapshot) {
+        switch (snapshot.connectionState) {
+          case ConnectionState.done:
+            final user = FirebaseAuth.instance.currentUser;
+            if (user != null) {
+              if (user.emailVerified) {
+                print('email is verified');
               } else {
-                print('You need to verify your email');
+                return const VerifyEmailView();
               }
-              return const Text('Done');
-            default:
-              return const Text('Loading...');
-          }
-        },
-      ),
+            } else {
+              return const RegisterView();
+            }
+            return const Text('DONE');
+            // print(user);
+            // if (user?.emailVerified ?? false) {
+            //   // print('You are a verified user');
+            //   // return const LoginView();
+            // } else {
+            //   return const VerifyEmailView();
+            //   // print('You need to verify your email');
+            //   // Navigator.of(context).push(
+            //   // MaterialPageRoute(builder: (context) => VerifyEmailView()));
+            // }
+            return const LoginView();
+          default:
+            return const CircularProgressIndicator();
+        }
+      },
     );
   }
 }
