@@ -21,7 +21,8 @@ void main() {
     routes: {
       '/register/': (context) => const RegisterView(),
       '/login/': (context) => const LoginView(),
-      '/verify_email/': (context) => const VerifyEmailView()
+      '/verify_email/': (context) => const VerifyEmailView(),
+      '/notes/': (context) => const NotesView()
     },
   ));
 }
@@ -73,7 +74,7 @@ class _NotesViewState extends State<NotesView> {
         actions: [
           PopupMenuButton(
             onSelected: (value) async {
-              // print(value);
+              // log(value.toString());
               log(value.toString());
               switch (value) {
                 case MenuActions.logout:
