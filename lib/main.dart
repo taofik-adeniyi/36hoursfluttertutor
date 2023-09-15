@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:thenotes/services/auth/auth_service.dart';
 import 'package:thenotes/views/constants/routes.dart';
 import 'package:thenotes/views/login_view.dart';
-import 'package:thenotes/views/notes_view.dart';
+import 'package:thenotes/views/notes/new_notes_view.dart';
+import 'package:thenotes/views/notes/notes_view.dart';
 import 'package:thenotes/views/register_view.dart';
 import 'package:thenotes/views/verify_email_view.dart';
 // import 'dart:developer' as devtools show log; used a sdevtools.log()
@@ -21,7 +22,8 @@ void main() {
       registerRoute: (context) => const RegisterView(),
       loginRoute: (context) => const LoginView(),
       verifyEmailRoute: (context) => const VerifyEmailView(),
-      notesRoute: (context) => const NotesView()
+      notesRoute: (context) => const NotesView(),
+      newNoteRoute: (context) => const NewNoteView()
     },
   ));
 }
